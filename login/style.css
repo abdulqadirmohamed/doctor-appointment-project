@@ -1,0 +1,34 @@
+body{
+    background-color: #F7F7F7 !important;
+}
+body::after{
+    content: '';
+    position: absolute;
+    right: 0%;
+    top: -35%;
+    width: 600px;
+    height: 600px;
+    background-color: rgb(102, 156, 255);
+    border-radius: 50%;
+    opacity: 0.1;
+    transition: all 0.3s ease-in-out;
+}
+@media only screen and (max-width: 600px) {
+    body::after{
+        content: '';
+        position: absolute;
+        left: -10%;
+        top: -11%;
+        width: 400px;
+        height: 400px;
+        background-color: rgb(102, 156, 255);
+        border-radius: 50%;
+        opacity: 0.1;
+    }
+    .card{
+        width: 300px !important;
+        margin: auto !important;
+        margin-top: 40px !important;
+        z-index: 10;
+    }
+}

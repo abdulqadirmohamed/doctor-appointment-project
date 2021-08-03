@@ -21,8 +21,8 @@
                 </div>
             </nav>
             <div class="auth">
-                <a href="../Auth/login.html">Login</a>
-                <a href="../Auth/registration.html">Registration</a>
+                <a href="../Auth/index.php">Login</a>
+                <a href="../Auth/registration.php">Registration</a>
             </div>
         </div>
     </header>

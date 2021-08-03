@@ -25,7 +25,7 @@
                 </div>
             </nav>
             <div class="auth">
-                <a href="./login.html">Login</a>
+                <a href="./index.php">Login</a>
                 <a href="#">Registration</a>
             </div>
         </div>

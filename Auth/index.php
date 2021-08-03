@@ -1,3 +1,35 @@
+<?php 
+    session_start();
+    $conn = mysqli_connect('localhost','root','','doctor-appointment');
+
+    $msg = '';
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $sql = "SELECT * FROM Admin_user WHERE username= '$username' AND password='$password' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        
+        if($row['role'] == 'admin')
+        {
+            $_SESSION['username'] = $username;
+            // header('location:admin.php');
+            header("Location: ../Admin-dashboard/index.php");
+        }
+        elseif($row['role'] == 'user')
+        {
+            $_SESSION['username'] = $username; 
+            header("Location: ../Normal-user/index.php");
+        }else{
+            $msg = '<div class="alert alert-danger">Username or Password incorrect</div>';
+        }
+    
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,22 +55,23 @@
             </nav>
             <div class="auth">
                 <a href="#">Login</a>
-                <a href="./registration.html">Registration</a>
+                <a href="./registration.php">Registration</a>
             </div>
         </div>
     </header>
 
     <div class="container">
-       <form action="" class="form-group bg-light shadow-lg rounded-lg p-5 my-5">
+       <form action="" method="post" class="form-group bg-light shadow-lg rounded-lg p-5 my-5">
            <div class="title">
                <h2>Sign in</h2>
            </div>
-           <input type="text" class="form-control my-3" placeholder="Username or Email">
-           <input type="text" class="form-control my-3" placeholder="Password">
+           <?php echo $msg; ?>
+           <input type="text" class="form-control my-3" name="username" placeholder="Username or Email" required autoComplete="off">
+           <input type="text" class="form-control my-3" name="password" placeholder="Password" required autoComplete="off">
            <div class="reg">
                <a href="./registration.html" class="my-1">Register here</a>
            </div>
-           <button class="btn btn-primary my-3">Submit</button>
+           <button class="btn btn-primary my-3" name="submit">Submit</button>
        </form>
     </div>
 
