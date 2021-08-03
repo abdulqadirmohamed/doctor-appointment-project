@@ -16,7 +16,7 @@
         {
             $_SESSION['username'] = $username;
             // header('location:admin.php');
-            header("Location: ../Admin-dashboard/index.php");
+            header("Location: ../Admin-dashboard/dashboard.html");
         }
         elseif($row['role'] == 'user')
         {

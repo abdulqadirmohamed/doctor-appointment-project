@@ -43,7 +43,7 @@
                 </div>
             </nav>
             <div class="auth">
-                <a href="#"><?php echo $_SESSION['username'] ?></a>
+                <a href="#" class="capitalize"><?php echo $_SESSION['username'] ?></a>
                 <a href="../Auth\logout.php">logout</a>
             </div>
         </div>
