@@ -1,3 +1,10 @@
+<?php 
+    include './db/conn.php';
+    $sql = "SELECT * FROM doctor";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +20,7 @@
         <div class="container navigation">
             <nav>
                 <div class="logo">
-                    <a href="../Admin-dashboard/dashboard.html">Dashboard > Doctor</a>
+                    <a href="../Admin-dashboard/dashboard.php">Dashboard > Doctor</a>
                 </div>
             </nav>
             <div class="auth">
@@ -25,59 +32,54 @@
     <!-- body section -->
     <div class="container">
         <section>
-            <div class="info-picker ">
+            <div class="info-picker d-flex justify-content-between align-items-center">
                 <form action="" class="form-group my-2 d-flex justify-content-around align-items-center">
-                    <div class="find">
-                        <select name="" id="" class="form-control my-2">
-                            <option selected disabled>Select</option>
-                            <option value="" class="form-control">Dhamandi</option>
-                            <option value="">Azimbut</option>
-                        </select>
-                    </div>
                     <div class="search-btn">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <div class="add-new">
-                        <button class="btn btn-primary">Add New</button>
-                    </div>
                 </form>
+                <div>
+                    <button class="btn btn-primary">Add New</button>
+                </div>
             </div>
             <!-- end information picker -->
             <div class="scrollme">
             <table class="table bg-white border ">
                 <thead class="shadow-sm">
                     <tr>
-                        <th>Name</th>
+                        <th>Patient Name</th>
                         <th>Phone</th>
-                        <th>Date</th>
-                        <th>Address</th>
-                        <th>Department</th>
-                        <th>Degree</th>
-                        <th>Gender</th>
-                        <th>Photo</th>
-                        <th>UserType</th>
-                        <th>Blood_Group</th>
-                        <th>Area</th>
                         <th>Email</th>
-                       
+                        <th>password</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                        $result = mysqli_query($conn, $sql);
+                        if($result){
+                            while($row = mysqli_fetch_assoc($result)){
+
+                    ?>
                     <tr>
-                        <td>Abdulqadir</td>
-                        <td>+252907592523</td>
-                        <td>08/02/2021</td>
-                        <td>Dhamandi</td>
-                        <td>Medicine</td>
-                        <td>Mpps,Fcps,Md,Phd</td>
-                        <td>Male</td>
-                        <td>Null</td>
-                        <td>Doctor</td>
-                        <td>A+</td>
-                        <td>Garowe</td>
-                        <td>test@test.co.so</td>
+                        <td><?php echo $row['name']?></td>
+                        <td><?php echo $row['phone']?></td>
+                        <td><?php echo $row['email']?></td>
+                        <td><?php echo $row['dob']?></td>
+                        <td><?php echo $row['degree']?></td>
+                        <td><?php echo $row['Speciality']?></td>
+                        <td>
+                            <form action="delete-doctor.php" method="get">
+                                <input type="hidden" name="id_delete" value="<?php echo $row['id'];?>">
+                                <input type="submit" class="btn btn-danger" name="id" value="Remove">
+                            </form>
+                        </td>
                        
                     </tr>
+                    <?php    }
+                        }?>
                 </tbody>
             </table>
             </div>
