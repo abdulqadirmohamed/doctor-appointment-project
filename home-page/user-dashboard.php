@@ -48,11 +48,22 @@
         </div>
     </header>
     <div class="container">
+        <?php 
+        if(isset($_POST['id'])){
+           if($_SESSION['username'] == $username){
+               
+
+           }
+        }
+        ?>
         <div class="info-text d-flex justify-content-between my-5">
             <a  href="find-doctor.html" class="btn btn-primary"><i class="fa fa-user"></i> Find Doctor</a>
             <a class="btn btn-danger"><i class="fa fa-calendar"></i> View Appointment</a>
-            <a class="btn btn-warning"><i class="fa fa-image"></i> Profile</a>
-        </div>
+            <a href="profile-petient.php?id=<?php echo $rowUser['id'] ?>" class="btn btn-warning">
+                <i class="fa fa-image"></i> 
+                Profile
+            </a>
+         </div>
     </div>
     <!-- Sections -->
     <div class="cards-section">

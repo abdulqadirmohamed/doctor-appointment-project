@@ -82,15 +82,15 @@
            </div>
            <div class="input-groups mt-3">
                <label for="">Email</label>
-               <input type="text" class="form-control my-2 p-2" name="email" autocomplete="off" s>
+               <input type="email" class="form-control my-2 p-2" name="email" autocomplete="off" required>
            </div>
            <div class="input-groups mt-3">
                <label for="">Password</label>
-               <input type="text" class="form-control my-2 p-2" name="password" autocomplete="off" >
+               <input type="password" class="form-control my-2 p-2" name="password" autocomplete="off" >
             </div>
             <div class="input-groups mt-3">
                 <label for="">Confirm Password</label>
-                <input type="text" class="form-control my-2 p-2" name="cpassword" autocomplete="off" >
+                <input type="password" class="form-control my-2 p-2" name="cpassword" autocomplete="off"  >
             </div>
             <div class="input-groups mt-3">
                 <label for="">Phone Number</label>
