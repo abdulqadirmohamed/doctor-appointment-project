@@ -16,7 +16,8 @@
         {
             $_SESSION['username'] = $username;
             // header('location:admin.php');
-            header("Location: ../Admin-dashboard/dashboard.php");
+            // C:\xampp\htdocs\Doctor-appointment\home-page\user-dashboard.html
+            header("Location: ../user-dashboard.php");
         }
         elseif($row['role'] == 'user')
         {
@@ -46,7 +47,7 @@
         <div class="container navigation">
             <nav>
                 <div class="logo">
-                    <a href="../Admin-dashboard/index.html">Medice</a>
+                    <a href="../index.php">Medice</a>
                 </div>
                 <div class="navbar">
                     <a href="#">About Us</a>
@@ -69,7 +70,7 @@
            <input type="text" class="form-control my-3" name="username" placeholder="Username or Email" required autoComplete="off">
            <input type="text" class="form-control my-3" name="password" placeholder="Password" required autoComplete="off">
            <div class="reg">
-               <a href="./registration.html" class="my-1">Register here</a>
+               <a href="./registration.php" class="my-1">Register here</a>
            </div>
            <button class="btn btn-primary my-3" name="submit">Submit</button>
        </form>

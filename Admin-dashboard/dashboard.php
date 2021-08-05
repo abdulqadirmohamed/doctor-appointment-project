@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./Style/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </head>
 <body>
@@ -61,7 +62,7 @@
     </div>
     <!-- content cards -->
     <section class="">
-        <div class="row d-flex">
+        <div class="row d-flex mx-3">
             <div class="card col-md-4 text-white d-flex mx-3">
                 <div class="card-header">
                      <h2>Total Doctors</h2>
@@ -129,7 +130,65 @@
                 </div>
             </div>
             <!-- en card -->
-          
+          <!-- charts -->
+          <div class="d-flex justify-content-between mt-4" style="width: 50%">
+            <hr>
+              <canvas id="doughnut"  style="max-width:500px"></canvas>
+              <canvas id="myChart" style="max-width:500px"></canvas>
+
+          </div>
+    <script>
+        var xValues = ["Male", "Female"];
+        var yValues = [55, 49];
+        var barColors = [
+        "#b91d47",
+        "#00aba9"
+        ];
+
+        new Chart("doughnut", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Gender of Patient"
+            }
+        }
+        });
+
+        var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      borderColor: "red",
+      fill: false
+    }, { 
+      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      borderColor: "green",
+      fill: false
+    }, { 
+      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      borderColor: "blue",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false}
+  }
+})
+</script>
+
+          <!-- end charts -->
             
         </div>
     </section>
