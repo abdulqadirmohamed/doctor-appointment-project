@@ -1,3 +1,27 @@
+<?php 
+    $conn = mysqli_connect('localhost','root','','doctor-appointment');
+    $msg = "";
+  error_reporting(0);
+    if (isset($_POST['submit'])) {
+        $username = $_POST['userName'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+
+        if($password == $cpassword){
+            $sql = "SELECT username, email FROM patient WHERE username='$username' AND email='$email'";
+            $result = mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result)>0){
+                $msg = "<div class='alert alert-danger'>Username or Email is already exists</div>";
+            }else{
+            //   
+            }
+        }else{
+            $msg = "<div class='alert alert-danger'>Password is not matched</div>";
+        }
+    }
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,60 +56,45 @@
     </header>
 
     <div class="container">
-       <form action="" class="form-group bg-light shadow-lg rounded-lg p-5 my-5">
+       <form action="" method="post" class="form-group bg-light shadow-lg rounded-lg p-5 my-5">
            <div class="title">
                <h2>Sign Up</h2>
            </div>
+          <span> <?php echo $msg;?> </span>
            <div class="input-groups mt-3">
                <label for="">Full Name</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
+               <input type="text" class="form-control my-2 p-2" autocomplete="off" name="fullName" >
+           </div>
+           <div class="input-groups mt-3">
+               <label for="">Username</label>
+               <input type="text" class="form-control my-2 p-2" autocomplete="off" name="userName"
+               value="" required>
            </div>
            <div class="input-groups mt-3">
                <label for="">Email</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
-           </div>
-           <div class="input-groups mt-3">
-               <label for="">Phone Number</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
+               <input type="text" class="form-control my-2 p-2" name="email" autocomplete="off" s>
            </div>
            <div class="input-groups mt-3">
                <label for="">Password</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
-           </div>
-           <div class="input-groups mt-3">
-               <label for="">Confirm Password</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
-           </div>
+               <input type="text" class="form-control my-2 p-2" name="password" autocomplete="off" >
+            </div>
+            <div class="input-groups mt-3">
+                <label for="">Confirm Password</label>
+                <input type="text" class="form-control my-2 p-2" name="cpassword" autocomplete="off" >
+            </div>
+            <div class="input-groups mt-3">
+                <label for="">Phone Number</label>
+                <input type="text" class="form-control my-2 p-2" name="phone" autocomplete="off" >
+            </div>
            <div class="input-groups mt-3">
                <label for="">Birthday</label>
-               <input type="date" class="form-control my-2 p-2" autocomplete="off">
+               <input type="date" class="form-control my-2 p-2" name="dob" autocomplete="off" >
            </div>
            <div class="input-groups mt-3">
                <label for="">Address</label>
-               <input type="text" class="form-control my-2 p-2" autocomplete="off">
+               <input type="text" class="form-control my-2 p-2" name="add" autocomplete="off" >
            </div>
-           <div class="input-groups mt-3 d-flex justify-content-between">
-              <div class="dep">
-                <label for="">Department</label>
-                <select name="" id="" class="form-select  my-2 p-2" aria-label="Default select example">
-                    <option selected disabled>Select Department</option>
-                    <option value="1">Medicine</option>
-                    <option value="2">Childreen</option>
-                    <option value="3">Cardoliogy</option>
-                    <option value="4">Authology</option>
-                </select>
-              </div>
-              <div class="deg">
-                <label for="">Degree</label>
-                <select name="" id="" class="form-select  my-2 p-2" aria-label="Default select example">
-                    <option selected disabled>Select Decree</option>
-                    <option value="1">Mbbs, Fcps, Md, Phd</option>
-                    <option value="2">Mbbs, Fcps</option>
-                    <option value="3">Mbbs</option>
-                </select>
-              </div>
-           </div>
-           <button class="btn btn-primary my-2">Submit</button>
+           <button class="btn btn-primary my-2" name="submit">Submit</button>
        </form>
     </div>
 
