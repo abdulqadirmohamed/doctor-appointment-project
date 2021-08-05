@@ -8,22 +8,23 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM Admin_user WHERE username= '$username' AND password='$password' ";
+        $sql = "SELECT * FROM patient WHERE username= '$username' AND password='$password' ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         
-        if($row['role'] == 'admin')
+        $_SESSION['username'] = $username;
+        if($row['username'] == $username)
         {
-            $_SESSION['username'] = $username;
             // header('location:admin.php');
             // C:\xampp\htdocs\Doctor-appointment\home-page\user-dashboard.html
             header("Location: ../user-dashboard.php");
         }
-        elseif($row['role'] == 'user')
-        {
-            $_SESSION['username'] = $username; 
-            header("Location: ../Normal-user/index.php");
-        }else{
+        // elseif($row['role'] == 'user')
+        // {
+        //     $_SESSION['username'] = $username; 
+        //     header("Location: ../Normal-user/index.php");
+        // }
+        else{
             $msg = '<div class="alert alert-danger">Username or Password incorrect</div>';
         }
     

@@ -1,3 +1,21 @@
+<?php 
+  session_start();
+  $conn = mysqli_connect('localhost','root','','doctor-appointment');
+    $sql = "SELECT * FROM patient";
+    
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+  
+  
+      if($_SESSION['username']){
+    
+      }
+      else{
+          session_unset();
+          session_destroy();
+          header('Location: ../Admin-user/logout.php');
+      }?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +41,7 @@
                 </div>
             </nav>
             <div class="auth">
-                <a href="#">Username</a>
+                <a href="#"><?php echo $_SESSION['username'] ?></a>
                 <!-- C:\xampp\htdocs\Doctor-appointment\home-page\Auth-patient\logout.php -->
                 <a href="./Auth-patient\logout.php">Logout</a>
             </div>

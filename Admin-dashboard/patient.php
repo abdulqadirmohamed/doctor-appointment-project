@@ -65,8 +65,9 @@
                     ?>
                     <tr>
                         <td><?php echo $row['fullname']?></td>
-                        <td><?php echo $row['contact']?></td>
+                        <td><?php echo $row['username']?></td>
                         <td><?php echo $row['email']?></td>
+                        <td><?php echo $row['contact']?></td>
                         <td><?php echo $row['password']?></td>
                         <td><?php echo $row['gender']?></td>
                         <td><?php echo $row['status']?></td>

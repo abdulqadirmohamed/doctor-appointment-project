@@ -3,18 +3,28 @@
     $msg = "";
   error_reporting(0);
     if (isset($_POST['submit'])) {
+        $fullname = $_POST['fullname'];
         $username = $_POST['userName'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
+        // $phone = $_POST['contact'];
+        // $dob = $_POST['dob'];
+        // $address = $_POST['address'];
 
         if($password == $cpassword){
             $sql = "SELECT username, email FROM patient WHERE username='$username' AND email='$email'";
             $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)>0){
                 $msg = "<div class='alert alert-danger'>Username or Email is already exists</div>";
-            }else{
-            //   
+            }else{ 
+            $sqlInsert = "INSERT INTO patient (fullname, username, email, password)
+            VALUES('$fullname', '$username','$email','$password')";
+
+            $result = mysqli_query($conn, $sqlInsert);
+            if($result){
+                $msg = "<div class='alert alert-success'>Registration Success</div>";
+            }
             }
         }else{
             $msg = "<div class='alert alert-danger'>Password is not matched</div>";
@@ -92,7 +102,15 @@
            </div>
            <div class="input-groups mt-3">
                <label for="">Address</label>
-               <input type="text" class="form-control my-2 p-2" name="add" autocomplete="off" >
+               <input type="text" class="form-control my-2 p-2" name="address" autocomplete="off" >
+           </div>
+           <div class="input-groups mt-3">
+               <label for="">Gender</label>
+               <select name="gender" id="" class="form-control" >
+                   <option selected disabled>Select</option>
+                   <option value="male">Male</option>
+                   <option value="female">Female</option>
+               </select>
            </div>
            <button class="btn btn-primary my-2" name="submit">Submit</button>
        </form>
