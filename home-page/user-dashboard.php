@@ -13,7 +13,7 @@
       else{
           session_unset();
           session_destroy();
-          header('Location: ../Admin-user/logout.php');
+          header('Location: ../home-page/index.php');
       }?>
 
 <!DOCTYPE html>

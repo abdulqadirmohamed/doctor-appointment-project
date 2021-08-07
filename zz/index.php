@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $conn = mysqli_connect('localhost','root','','doctor-appointment');
+    $conn = mysqli_connect('localhost','root','','test');
 
     $msg = '';
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -8,20 +8,20 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM Admin_user WHERE username= '$username' AND password='$password' ";
+        $sql = "SELECT * FROM approving WHERE username= '$username' AND password='$password' ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         
-        if($row['role'] == '1')
+        if($row['role'] == 'admin')
         {
             $_SESSION['username'] = $username;
             // header('location:admin.php');
-            header("Location: ../Admin-dashboard/dashboard.php");
+            header("Location: admin.php");
         }
-        elseif($row['role'] == '0')
+        elseif($row['role'] == 'user')
         {
             $_SESSION['username'] = $username; 
-            header("Location: ../Doctor-dashboard\index.html");
+            header("Location: user.php");
         }else{
             $msg = '<div class="alert alert-danger">Username or Password incorrect</div>';
         }
