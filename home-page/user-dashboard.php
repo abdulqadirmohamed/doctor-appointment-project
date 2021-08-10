@@ -1,20 +1,21 @@
 <?php 
-  session_start();
-  $conn = mysqli_connect('localhost','root','','doctor-appointment');
-    $sql = "SELECT * FROM patient";
+//   session_start();
+//   $conn = mysqli_connect('localhost','root','','doctor-appointment');
+//     $sql = "SELECT * FROM patient";
     
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+//     $result = mysqli_query($conn, $sql);
+//     $row = mysqli_fetch_array($result);
   
   
-      if($_SESSION['username']){
-    
-      }
-      else{
-          session_unset();
-          session_destroy();
-          header('Location: ../home-page/index.php');
-      }?>
+//       if($_SESSION['username']){
+        
+//       }
+//       else{
+//           session_unset();
+//           session_destroy();
+//           header('Location: ../home-page/index.php');
+    //   }
+      ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,37 +30,16 @@
     <link rel="stylesheet" href="./Style/user-dash.css">
 </head>
 <body>
-    <header>
-        <div class="container navigation">
-            <nav>
-                <div class="logo">
-                    <a href="#">Medicate</a>
-                </div>
-                <div class="navbar">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact Us</a>
-                </div>
-            </nav>
-            <div class="auth">
-                <a href="#"><?php echo $_SESSION['username'] ?></a>
-                <!-- C:\xampp\htdocs\Doctor-appointment\home-page\Auth-patient\logout.php -->
-                <a href="./Auth-patient\logout.php">Logout</a>
-            </div>
-        </div>
-    </header>
+    <?php 
+     include './include/header.php';
+    
+    ?>
     <div class="container">
-        <?php 
-        if(isset($_POST['id'])){
-           if($_SESSION['username'] == $username){
-               
-
-           }
-        }
-        ?>
+     
         <div class="info-text d-flex justify-content-between my-5">
             <a  href="find-doctor.html" class="btn btn-primary"><i class="fa fa-user"></i> Find Doctor</a>
             <a class="btn btn-danger"><i class="fa fa-calendar"></i> View Appointment</a>
-            <a href="profile-petient.php?id=<?php echo $rowUser['id'] ?>" class="btn btn-warning">
+            <a href="profile-petient.php" class="btn btn-warning">
                 <i class="fa fa-image"></i> 
                 Profile
             </a>

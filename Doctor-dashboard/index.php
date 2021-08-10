@@ -1,3 +1,24 @@
+<?php 
+	
+    session_start();
+  $conn = mysqli_connect('localhost','root','','doctor-appointment');
+    $sql = "SELECT * FROM Admin_user";
+    
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+  
+  
+      if($_SESSION['username']){
+      
+      }
+      else{
+          session_unset();
+          session_destroy();
+          header('Location: ../Auth/logout.php');
+      }       
+    
+    // $_SESSION['id']; 
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,37 +42,39 @@
                 </div>
             </nav>
             <div class="auth">
-                <a href="#">Doctor Name</a>
-                <a href="#">Logout</a>
+                <a href="#"><?php echo $_SESSION['username'] ?></a>
+                <a href="../Auth/logout.php">Logout</a>
             </div>
         </div>
     </header>
     <div class="d-flex">
     <div class="sidebar">
         <div class="info-detials">
-            <figure>
+            <figure class="text-center">
                 <img src="./image/hero.png" alt="">
             </figure>
-            <div class="text-info mb-4">
-                <label for="">Abdulqadir Mohamed</label>
+            <div class="text-info bg-white border p-2">
+                <h5 class=" text-primary ">Abdulqadir Mohamed</h5>
             </div>
-            <div class="text-info d-flex jusfity-content-between">
+            <div class="text-info d-flex jusfity-content-between border p-2">
                 <label for="">Cardiology: </label>
                 <label for="">Children</label>
             </div>
-            <div class="text-info d-flex jusfity-content-between">
+            <div class="text-info d-flex jusfity-content-between  border p-2">
                 <label for="">Gender: </label>
                 <label for="">Male</label>
             </div>
-            <div class="text-info d-flex jusfity-content-between">
+            <div class="text-info d-flex jusfity-content-between  border p-2">
                 <label for="">Address: </label>
                 <label for="">Halgan 0047</label>
             </div>
-            <div class="text-info d-flex jusfity-content-between">
+            <div class="text-info d-flex jusfity-content-between  border p-2">
                 <label for="">Phone: </label>
                 <label for="">123456789</label>
             </div>
-            <button class="btn btn-warning my-3">Edit</button>
+            <div class="text-center">
+                <button class="btn btn-light my-3">Edit Profile</button>
+            </div>
         </div>
         <!-- content -->
     </div>
@@ -73,6 +96,24 @@
                         <td>Ahmed Ali</td>
                         <td>123 456 789</td>
                         <td>02/08/2021 10:00PM</td>
+                        <td>
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Appointment Cencel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mohamed Farah</td>
+                        <td>123 456 789</td>
+                        <td>02/08/2021 11:00PM</td>
+                        <td>
+                            <button class="btn btn-success">Approve</button>
+                            <button class="btn btn-danger">Appointment Cencel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fatima Ahmed</td>
+                        <td>123 456 789</td>
+                        <td>02/08/2021 12:00PM</td>
                         <td>
                             <button class="btn btn-success">Approve</button>
                             <button class="btn btn-danger">Appointment Cencel</button>

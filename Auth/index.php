@@ -21,7 +21,7 @@
         elseif($row['role'] == '0')
         {
             $_SESSION['username'] = $username; 
-            header("Location: ../Doctor-dashboard\index.html");
+            header("Location: ../Doctor-dashboard\index.php");
         }else{
             $msg = '<div class="alert alert-danger">Username or Password incorrect</div>';
         }
