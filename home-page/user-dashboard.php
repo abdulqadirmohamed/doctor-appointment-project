@@ -37,7 +37,7 @@
     <div class="container">
      
         <div class="info-text d-flex justify-content-between my-5">
-            <a  href="find-doctor.html" class="btn btn-primary"><i class="fa fa-user"></i> Find Doctor</a>
+            <a  href="find-doctor.php" class="btn btn-primary"><i class="fa fa-user"></i> Find Doctor</a>
             <a class="btn btn-danger"><i class="fa fa-calendar"></i> View Appointment</a>
             <a href="profile-petient.php" class="btn btn-warning">
                 <i class="fa fa-image"></i> 

@@ -1,3 +1,12 @@
+<?php $conn = mysqli_connect('localhost','root','','doctor-appointment');
+if(isset($_GET['id'])){
+    $id = $_GET['username'];
+
+    $sql = "SELECT * FROM Admin LEFT JOIN DOCTORS ON ADMIN.EMAIL = DOCTORS.EMAIL WHERE username = $id";
+    $result = mysqli_query($conn, $sql);
+    $fetch = mysqli_fetch_assoc($result);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +35,7 @@
         <div class="container navigation">
             <nav>
                 <div class="logo">
-                    <a href="../Admin-dashboard/index.html">Medicate</a>
+                    <a href="user-dashboard.php">Medicate</a>
                 </div>
                 <div class="navbar">
                     <a href="#">About Us</a>
@@ -45,10 +54,11 @@
             <div class="title">
                 <h5 class="alert alert-primary my-2">Take Appointment</h5>
             </div>
+            <?php if($fetch): ?>
             <form action="" class="form-group">
                 <div class="card shadow-sm my-2">
                     <div class="card-header bg-primary text-white">
-                        <h3 >Abdulqadir Mohamed</h3>
+                        <h3 ><?php echo $fetch['name']?></h3>
                     </div>
                     <div class="card-body shadow-sm">
                         <div class="info my-2">
@@ -79,6 +89,8 @@
                 </div>
                 <button class="btn btn-primary my-2">Submit</button>
             </form>
+            <?php else:?>
+        <?php endif;?>
         </section>
     </div>
     

@@ -8,7 +8,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM Admin_user WHERE username= '$username' AND password='$password' ";
+        $sql = "SELECT * FROM Admin WHERE username= '$username' AND password='$password' ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         

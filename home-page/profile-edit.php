@@ -1,6 +1,6 @@
 <?php
-
     $conn = mysqli_connect('localhost','root','','doctor-appointment');
+    
     $id = $_POST['id_update'];
    
     $sql = "SELECT * FROM patient WHERE id= $id";
@@ -120,7 +120,7 @@
                 gender='$gender',
                 address='$address',
                 status='$status'
-                
+
                 WHERE id=$id";
         $query = mysqli_query($conn, $sql);
         if($query){      
